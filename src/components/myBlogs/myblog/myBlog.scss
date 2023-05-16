@@ -1,0 +1,13 @@
+.actions{
+    display: flex;
+    margin-top: 15px;
+    font-size: 1.2rem;
+     .actBtn{
+        margin-right: 10px;
+     }
+     .edit{
+        &:hover{
+            cursor: pointer;
+        }
+     }
+}
