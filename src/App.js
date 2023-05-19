@@ -17,7 +17,6 @@ import EditBlog from "./pages/editBlog/EditBlog";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements([
-      <Route path="/ok" element={<Navigate to="/my-passwords" />} />,
       <Route path="/" element={<Home />} />,
       <Route path="/myBlogs/:id" element={<Profile />} />,
       <Route path="/login" element={<Login />} />,

@@ -5,9 +5,17 @@
      .actBtn{
         margin-right: 10px;
      }
-     .edit{
+     .delete{
+      padding: 10px 20px;
+
+      color: red;
         &:hover{
             cursor: pointer;
+            color: black;
+            border-radius: 50px;
+background: #eb6d6d;
+box-shadow:  10px 10px 30px #e96060,
+             -10px -10px 30px #da5858;
         }
      }
 }

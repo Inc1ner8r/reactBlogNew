@@ -15,7 +15,9 @@ const Login = () => {
         username: User.username,
       })
       .then((res) => {
-        if (User.password == res.data[0].password) {
+        if (res.data[0].password == User.password) {
+          localStorage.setItem("userid", res.data[0].id);
+          localStorage.setItem("username", User.username);
           navigate("/");
         } else {
           alert("wrong password");
@@ -44,7 +46,7 @@ const Login = () => {
           <input
             name="password"
             className="logInput"
-            type="text"
+            type="password"
             value={User.password}
             onChange={(e) =>
               setUser({ ...User, [e.target.name]: e.target.value })

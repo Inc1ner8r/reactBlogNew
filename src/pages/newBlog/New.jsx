@@ -11,12 +11,17 @@ const New = () => {
   });
   const postBlog = async (e) => {
     e.preventDefault();
+    console.log(Blog.content);
     axios
       .post("http://localhost:8080/blog", {
         title: Blog.title,
         content: Blog.content,
+        userid: localStorage.getItem("userid"),
+        username: localStorage.getItem("username"),
+        datetime: Date().toLocaleString(),
       })
       .then((res) => {
+        console.log(res);
         navigate("/");
       });
   };

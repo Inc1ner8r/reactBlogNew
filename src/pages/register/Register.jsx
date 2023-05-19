@@ -10,13 +10,44 @@ const Register = () => {
     email: "",
     password: "",
   });
+  function ValidateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    return false;
+  }
+  function ValidatePassword(password) {
+    if (
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
+    ) {
+      return true;
+    }
+    return false;
+  }
   const handleRegister = async (e) => {
     e.preventDefault();
+    if (User.password != User.confirmpassword) {
+      alert("check password again");
+      return;
+    }
+    const mailbool = ValidateEmail(User.email);
+    if (!mailbool) {
+      alert("You have entered an invalid email address!");
+      return;
+    }
+    const passbool = ValidatePassword(User.password);
+    if (!passbool) {
+      alert("You have entered a weak password");
+      return;
+    }
+
+    //ValidateEmail(User.email);
     axios
       .post("http://localhost:8080/register", {
         username: User.username,
         email: User.email,
         password: User.password,
+        confirmpassword: User.confirmpassword,
       })
       .then((res) => {
         navigate("/login");
@@ -55,7 +86,7 @@ const Register = () => {
           <input
             name="password"
             className="logInput"
-            type="text"
+            type="password"
             value={User.password}
             onChange={(e) =>
               setUser({ ...User, [e.target.name]: e.target.value })
@@ -64,7 +95,15 @@ const Register = () => {
         </div>
         <div className="inputContainer">
           <div className="label">Confirm Password : </div>
-          <input name="confirmpassword" className="logInput" type="text" />
+          <input
+            name="confirmpassword"
+            className="logInput"
+            type="password"
+            value={User.confirmpassword}
+            onChange={(e) =>
+              setUser({ ...User, [e.target.name]: e.target.value })
+            }
+          />
         </div>
         <button className="logSubmit" type="submit">
           Register

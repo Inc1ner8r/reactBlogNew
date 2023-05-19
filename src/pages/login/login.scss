@@ -1,6 +1,13 @@
 .register-btn{
     margin-bottom: 40px;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    border-radius: 50px;
     &:hover{
         cursor: pointer;
+        background: #6bbfff;
+box-shadow:  20px 20px 60px #5ba2d9,
+             -20px -20px 60px #7bdcff;
+
     }
 }

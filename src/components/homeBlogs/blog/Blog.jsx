@@ -1,17 +1,13 @@
 import React from "react";
 import "./blog.scss";
 
-const Blog = () => {
+const Blog = (props) => {
   return (
     <div className="blog">
-      <div className="user">Punarv Pawade</div>
-      <div className="title">Title of this blog</div>
-      <div className="description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ea,
-        possimus iste, consequuntur, laudantium unde odit excepturi facere
-        dolorum voluptatum eius doloribus sed ipsum itaque animi illum nobis
-      </div>
-      <div className="date">may 20 | 4:20 pm</div>
+      <div className="user">{props.username}</div>
+      <div className="title">{props.title}</div>
+      <div className="description">{props.content}</div>
+      <div className="date">{props.datetime}</div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const id = localStorage.getItem("userid");
   return (
     <div className="header">
       <div className="left">
@@ -18,7 +19,7 @@ const Header = () => {
         <div
           className="myBlogs leftChild"
           onClick={() => {
-            navigate("/myBlogs/1");
+            navigate("/myBlogs/" + id);
           }}
         >
           My Blogs
@@ -32,7 +33,15 @@ const Header = () => {
           New Blog
         </div>
       </div>
-      <div className="logout">Logout</div>
+      <div
+        className="logout"
+        onClick={() => {
+          localStorage.removeItem("userid");
+          navigate("/login");
+        }}
+      >
+        Logout
+      </div>
     </div>
   );
 };
