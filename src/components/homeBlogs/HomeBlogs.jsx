@@ -29,10 +29,13 @@ const HomeBlogs = () => {
             {allBlogs.map((item) => (
               <div key={item.id}>
                 <Blog
+                  id={item.id}
                   title={item.title}
                   content={item.content}
                   username={item.username}
                   datetime={item.datetime}
+                  likes={item.likes}
+                  dislikes={item.dislikes}
                 />
               </div>
             ))}
